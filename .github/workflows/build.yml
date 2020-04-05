@@ -1,0 +1,101 @@
+name: package
+
+on:
+  push:
+    tags:
+      - 'v*.*.*-*'
+    
+jobs:
+  osx:
+    name: build on macOS X
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12.16.1
+      - name: build frontend
+        working-directory: frontend
+        env:
+          REACT_APP_GOOGLE_WEBFONT_API: ${{ secrets.REACT_APP_GOOGLE_WEBFONT_API }}
+        run: |
+          yarn
+          yarn build
+      - name: build electron
+        run: |
+          yarn
+          yarn build
+      - name: upload dmg
+        uses: actions/upload-artifact@v1
+        with:
+          name: release
+          path: ./release/HexFonts-1.0.0-beta.dmg
+      - name: upload zip
+        uses: actions/upload-artifact@v1
+        with:
+          name: release
+          path: ./release/HexFonts-1.0.0-beta-mac.zip
+
+  linux:
+    name: build on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12.16.1
+      - name: build frontend
+        working-directory: frontend
+        env:
+          REACT_APP_GOOGLE_WEBFONT_API: ${{ secrets.REACT_APP_GOOGLE_WEBFONT_API }}
+        run: |
+          yarn
+          echo $REACT_APP_GOOGLE_WEBFONT_API
+          yarn build
+      - name: build electron
+        run: |
+          yarn
+          yarn build
+      - name: upload AppImage
+        uses: actions/upload-artifact@v1
+        with:
+          name: release
+          path: ./release/HexFonts-1.0.0-beta.AppImage
+      - name: upload snap
+        uses: actions/upload-artifact@v1
+        with:
+          name: release
+          path: ./release/h3xfonts_1.0.0-beta_amd64.snap
+      - name: upload tarball
+        uses: actions/upload-artifact@v1
+        with:
+          name: release
+          path: ./release/h3xfonts-1.0.0-beta.tar.gz
+      - name: upload changelog
+        uses: actions/upload-artifact@v1
+        with:
+          name: release
+          path: ./CHANGELOG.md
+        
+  release:
+    name: Release to Github
+    needs: [osx, linux]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download
+        uses: actions/download-artifact@v1
+        with:
+          name: release
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: ./release/CHANGELOG.md
+          draft: true
+          files: |
+            ./release/HexFonts-1.0.0-beta-mac.zip
+            ./release/HexFonts-1.0.0-beta.dmg
+            ./release/HexFonts-1.0.0-beta.AppImage
+            ./release/h3xfonts-1.0.0-beta.tar.gz
+            ./release/h3xfonts_1.0.0-beta_amd64.snap
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

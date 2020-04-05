@@ -1,0 +1,20 @@
+{
+	"name": "HexFonts",
+	"short_name": "HexFonts",
+	"icons": [
+		{
+			"src": "./icons/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "./icons/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"start_url": "/",
+	"theme_color": "#001529",
+	"background_color": "#ffffff",
+	"display": "standalone"
+}

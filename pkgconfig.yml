@@ -1,0 +1,55 @@
+appId: "com.heinthanth.h3xfonts"
+productName: HexFonts
+publish: null
+directories:
+  output: release
+  buildResources: "./assets"
+files:
+  - "./frontend/build/**/*"
+  - "./src/app.js"
+  - "./src/**/*"
+mac:
+  asar: true
+  icon: assets/icon.icns
+  category: public.app-category.developer-tools
+  hardenedRuntime: true
+dmg:
+  background: assets/dmg-background.tiff
+  icon: assets/icon.icns
+  iconSize: 110
+  contents:
+    - x: 150
+      y: 95
+    - x: 400
+      y: 95
+      type: link
+      path: /Applications
+  window:
+    width: 550
+    height: 200
+win:
+  icon: assets/icon.ico
+nsis:
+  oneClick: true
+  runAfterFinish: true
+  installerIcon: assets/icon.ico
+  uninstallerIcon: assets/icon.ico
+  deleteAppDataOnUninstall: true
+  license: LICENSE
+linux:
+  category: Utility
+  packageCategory: utils
+  executableName: h3xfonts
+  synopsis: Simple, Hackable, Cross-platform application to install Google Fonts easily!
+  icon: assets/iconset
+  target:
+    - AppImage
+    - snap
+    - tar.gz
+deb:
+  priority: optional
+  depends:
+    - curl
+rpm:
+  depends:
+    - curl

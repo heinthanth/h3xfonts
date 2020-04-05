@@ -1,0 +1,108 @@
+.h3x-sider {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	min-width: 70px!important;
+	max-width: 70px!important;
+	width: 70px!important;
+	padding-top: 23px;
+	border-right: 1px solid #f0f0f0;
+	background-color: rgb(246, 246, 246);
+}
+
+.h3x-sider ul {
+	background-color: rgb(246, 246, 246);
+}
+
+.h3x-main-menu {
+	width: 70px!important;
+}
+
+.h3x-main-menu .ant-menu-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 70px!important;
+	margin: 0px!important;
+	height: 50px;
+}
+
+.h3x-main-layout {
+	min-height: 100vh;
+}
+
+.h3x-app-title-bar {
+	-webkit-user-select: none;
+  	-webkit-app-region: drag;
+	height: 23px;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+	background-color: transparent;
+}
+
+.h3x-main-content {
+	background-color: #fff; 
+	padding: 16px;
+	margin-left: 70px;
+	width: calc(100% - 70px);
+}
+
+.h3x-explore-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 16px;
+	margin-left: 70px;
+	width: calc(100% - 70px);
+	background-color: #fff;
+	z-index: 2;
+}
+
+.h3x-explore-font-list-container {
+	margin-top: calc(119px - 16px);
+}
+
+.h3x-back-to-top {
+	bottom: 20px;
+	right: 20px;
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+	span, p, .ant-typography, .ant-timeline-item, input {
+		color: rgba(255, 255, 255, 0.8)!important;
+	}
+	h1.ant-typography, h2.ant-typography, h3.ant-typography, h4.ant-typography, h5.ant-typography, h6.ant-typography, a {
+		color: #fff!important;
+	}
+	.ant-timeline-item-head {
+		border-color: rgba(0, 0, 0, 0.45)!important;
+	}
+	.ant-timeline-item-tail {
+		border-color: #5f5f6f!important;
+	}
+	.h3x-sider, .h3x-sider ul {
+		border-right: 0 none;
+		background-color: #293045;
+	}
+	.h3x-main-content, .h3x-explore-header, button {
+		background-color: #52596e!important;
+	}
+	.ant-input-search, .ant-input-search input {
+		background-color: #52596e;
+	}
+	.ant-list-item {
+		border-color: #6f6f7f!important;
+	}
+	.ant-menu-item-selected {
+		background-color: #52596e!important;
+	}
+
+	.ant-btn.ant-btn-loading::before {
+		background-color: transparent;
+	}
+}
