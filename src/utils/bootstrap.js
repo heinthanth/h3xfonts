@@ -44,6 +44,9 @@ function CreateEssential() {
 	if(!fs.existsSync(setting["TEMP_FONT_DIR"])) {
 		fs.mkdirSync(setting["TEMP_FONT_DIR"]);
 	}
+	if(!fs.existsSync(setting["SYS_FONT_DIR"])) {
+		fs.mkdirSync(setting["SYS_FONT_DIR"]);
+	}
 	if(!fs.existsSync(setting["FONT_DB"])) {
 		fs.closeSync(fs.openSync(setting["FONT_DB"], 'w'));
 	}

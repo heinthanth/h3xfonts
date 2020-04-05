@@ -1,6 +1,6 @@
 // main js to control fonts
 const { ipcMain } = require("electron");
-const { execSync } = require("child_process");
+const { execSync, exec } = require("child_process");
 const { removeSpace, space2dashLow } = require("../utils/helper");
 const fs = require("fs");
 
@@ -25,7 +25,7 @@ const Install = (event, item) => {
 	);
 	execSync(`rm -rf ${global.setting["TEMP_FONT_DIR"]}/${tempF}/`);
 	if (process.platform === "linux") {
-		execSync("fc-cache -f -v");
+		exec("fc-cache -f -v");
 	}
 	add2db(item.family);
 	event.reply("install-complete", item.family);
@@ -38,7 +38,7 @@ const Uninstall = (event, item) => {
 		)}-*-h3xfonts.ttf`
 	);
 	if (process.platform === "linux") {
-		execSync("fc-cache -f -v");
+		exec("fc-cache -f -v");
 	}
 	removeFromdb(item.family);
 	event.reply("uninstall-complete", item.family);
