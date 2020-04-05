@@ -11,3 +11,4 @@ First beta release with Linux and macOS support.
 - List font families
 - Install the whole family
 - Uninstall the whole family
+- Support macOS dark mode

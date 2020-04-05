@@ -19,7 +19,7 @@ class About extends React.Component {
 					<Timeline.Item>Start development at 2020-03-23</Timeline.Item>
 					<Timeline.Item>Delete and rewrite project for 3 times</Timeline.Item>
 					<Timeline.Item>First working project at 2020-03-29</Timeline.Item>
-					<Timeline.Item>Rewrite project for more condensed and clean codes at 30-3-2020</Timeline.Item>
+					<Timeline.Item>Rewrite project for more condensed, clean codes and better UI at 30-3-2020</Timeline.Item>
 					<Timeline.Item>First beta release with Linux and macOS support at 2020-04-5</Timeline.Item>
 				</Timeline>
 				<Title level={2}>Developer Info</Title>
